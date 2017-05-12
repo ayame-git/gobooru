@@ -10,6 +10,7 @@ const salt string = "So-I-Heard-You-Like-Mupkids-?"
 
 type AuthHandler struct {
 	Client http.Client
+	IsAuth bool
 }
 
 func NewAuthHandler(booru, login, password string) (auth AuthHandler, err error) {
@@ -27,6 +28,12 @@ func NewAuthHandler(booru, login, password string) (auth AuthHandler, err error)
 	req, err := http.NewRequest("POST", booru, nil)
 	req.SetBasicAuth(login, password_hash)
 
-	_, err = auth.Client.Do(req)
+	resp, err := auth.Client.Do(req)
+	if err != nil {
+		return
+	}
+	if resp.StatusCode == 200 {
+		auth.IsAuth = true
+	}
 	return
 }
