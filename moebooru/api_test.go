@@ -1,28 +1,42 @@
 package moebooru
 
 import (
-	"net/url"
 	"testing"
 )
 
-func TestPosts(t *testing.T) {
+func TestGet(t *testing.T) {
 	api := NewMoebooruApi("http://konachan.com")
-	req := url.Values{}
 
-	resp, err := api.GetPosts(req)
+	_, err := api.GetPosts(nil)
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Log(resp)
-}
-
-func TestNotes(t *testing.T) {
-	api := NewMoebooruApi("http://konachan.com")
-	req := url.Values{}
-
-	resp, err := api.GetNotes(req)
+	_, err = api.GetArtists(nil)
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Log(resp)
+	_, err = api.GetTags(nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = api.GetUsers(nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = api.GetForum(nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = api.GetWiki(nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = api.GetNotes(nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = api.GetPools(nil)
+	if err != nil {
+		t.Fatal(err)
+	}
 }

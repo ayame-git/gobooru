@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/url"
-	"strconv"
 
 	"github.com/ayame-git/gobooru/moebooru/auth"
 )
@@ -45,48 +44,4 @@ func cleanValues(v url.Values) url.Values {
 		return url.Values{}
 	}
 	return v
-}
-
-//TODO: move these
-
-func (api MoebooruApi) GetTags(v url.Values) (tags []Tags, err error) {
-	err = api.get("/tag.json", v, &tags)
-	return
-}
-
-func (api MoebooruApi) GetArtists(v url.Values) (artists []Artists, err error) {
-	err = api.get("/artist.json", v, &artists)
-	return
-}
-
-func (api MoebooruApi) GetComment(id int64) (comment Comments, err error) {
-	v := url.Values{}
-	v.Set("id", strconv.FormatInt(id, 10))
-
-	err = api.get("/comment/show.json", v, &comment)
-	return
-}
-
-func (api MoebooruApi) GetWiki(v url.Values) (wiki []Wiki, err error) {
-	err = api.get("/wiki.json", v, &wiki)
-	return
-}
-func (api MoebooruApi) GetNotes(v url.Values) (notes []Notes, err error) {
-	err = api.get("/note.json", v, &notes)
-	return
-}
-
-func (api MoebooruApi) GetUsers(v url.Values) (users []Users, err error) {
-	err = api.get("/user.json", v, &users)
-	return
-}
-
-func (api MoebooruApi) GetForum(v url.Values) (forum []Forum, err error) {
-	err = api.get("/forum.json", v, &forum)
-	return
-}
-
-func (api MoebooruApi) GetPools(v url.Values) (pools []Pools, err error) {
-	err = api.get("/pool.json", v, &pools)
-	return
 }

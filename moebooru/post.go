@@ -1,6 +1,7 @@
 package moebooru
 
 import (
+	"strings"
 	"time"
 )
 
@@ -21,4 +22,8 @@ type Post struct {
 
 func (p Post) CreatedAtTime() time.Time {
 	return time.Unix(p.CreatedAt, 0)
+}
+
+func (p Post) GetTags() []string {
+	return strings.Split(p.Tags, " ")
 }
