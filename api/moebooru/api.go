@@ -9,9 +9,15 @@ import (
 //TODO: request constants
 
 const (
-	postList   = "/post.json"
-	tagList    = "/tag.json"
-	artistList = "/artist.json"
+	postList    = "/post.json"
+	tagList     = "/tag.json"
+	artistList  = "/artist.json"
+	commentList = "/comment/show.json"
+	wikiList    = "/wiki.json"
+	noteList    = "/note.json"
+	userList    = "/user.json"
+	forumList   = "/forum.json"
+	poolList    = "/pool.json"
 )
 
 type API struct {
@@ -61,15 +67,32 @@ func (api *API) GetArtists(req ArtistListRequest) (artists []Artists, err error)
 	return
 }
 
-//do we even need these?
-func NewPostListRequest() (r PostListRequest) {
+//get comment by id ?
+func (api *API) GetComments(req CommentListRequest) (comment Comments, err error) {
+	err = api.get(commentList, req, &comment)
 	return
 }
 
-func NewArtistListRequest() (r ArtistListRequest) {
+func (api *API) GetWiki(req WikiListRequest) (wiki []Wiki, err error) {
+	err = api.get(wikiList, req, &wiki)
+	return
+}
+func (api *API) GetNotes(req NoteListRequest) (notes []Notes, err error) {
+	err = api.get(noteList, req, &notes)
 	return
 }
 
-func NewTagListRequest() (r ArtistListRequest) {
+func (api *API) GetUsers(req UserListRequest) (users []Users, err error) {
+	err = api.get(userList, req, &users)
+	return
+}
+
+func (api *API) GetForum(req ForumListRequest) (forum []Forum, err error) {
+	err = api.get(forumList, req, &forum)
+	return
+}
+
+func (api *API) GetPools(req PoolListRequest) (pools []Pools, err error) {
+	err = api.get(poolList, req, &pools)
 	return
 }
