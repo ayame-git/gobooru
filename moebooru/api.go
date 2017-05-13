@@ -2,6 +2,7 @@ package moebooru
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/url"
 
@@ -23,7 +24,6 @@ func (api *MoebooruApi) SetCredentials(login, password string) {
 	api.authClient.SetCredentials(login, password)
 }
 
-//generic get fucntion
 func (api *MoebooruApi) get(url string, v url.Values, data interface{}) error {
 	resp, err := api.authClient.Get(api.Booru+url, v)
 	if err != nil {
@@ -32,6 +32,12 @@ func (api *MoebooruApi) get(url string, v url.Values, data interface{}) error {
 
 	defer resp.Body.Close()
 	return decodeResp(resp, data)
+}
+
+func (api *MoebooruApi) post(url string, v url.Values, field string) error {
+	resp, err := api.authClient.Post(api.Booru+url, v, field)
+	fmt.Println(resp.StatusCode)
+	return err
 }
 
 //TODO: parse responses

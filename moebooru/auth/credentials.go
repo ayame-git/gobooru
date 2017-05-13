@@ -5,7 +5,7 @@ import (
 	"encoding/hex"
 )
 
-const salt string = "So-I-Heard-You-Like-Mupkids-?--"
+const salt string = "So-I-Heard-You-Like-Mupkids-?"
 
 type Credentials struct {
 	Login        string
@@ -13,7 +13,7 @@ type Credentials struct {
 }
 
 func NewCredentials(login, password string) (c Credentials) {
-	b := []byte(salt + password + "--")
+	b := []byte(salt + password)
 
 	c.Login = login
 	c.PasswordHash = hash(b)
