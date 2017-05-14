@@ -13,6 +13,7 @@ type Post struct {
 	CreatedAt string `json:"created_at"`
 	Width     int    `json:"image_width"`
 	Height    int    `json:"image_height"`
+	Rating    string `json:"rating"`
 
 	FileURL string `json:"file_url"`
 	Source  string `json:"source"`
