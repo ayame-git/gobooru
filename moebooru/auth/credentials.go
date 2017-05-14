@@ -3,6 +3,7 @@ package auth
 import (
 	"crypto/sha1"
 	"encoding/hex"
+	"strings"
 )
 
 const salt string = "So-I-Heard-You-Like-Mupkids-?"
@@ -23,6 +24,6 @@ func NewCredentials(login, password string) (c Credentials) {
 func hash(b []byte) (sha string) {
 	hasher := sha1.New()
 	hasher.Write(b)
-	sha = hex.EncodeToString(hasher.Sum(nil))
+	sha = strings.ToUpper(hex.EncodeToString(hasher.Sum(nil)))
 	return
 }
