@@ -20,6 +20,7 @@ type Post struct {
 	Score int `json:"score"`
 }
 
+//doesn't seem to work
 func (p Post) CreatedAtTime() (time.Time, error) {
 	layout := "2017-05-14T02:10:24.232-04:00"
 	return time.Parse(layout, p.CreatedAt)

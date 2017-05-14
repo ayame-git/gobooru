@@ -16,5 +16,5 @@ func TestGet(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Log(posts[0].FileURL)
+	t.Log(posts[0].CreatedAtTime())
 }
