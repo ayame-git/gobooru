@@ -30,7 +30,6 @@ func (api *DanbooruApi) get(url string, v url.Values, data interface{}) error {
 		return err
 	}
 
-	defer resp.Body.Close()
 	return decodeResp(resp, data)
 }
 
