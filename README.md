@@ -1,4 +1,4 @@
-# gobooru
+# gobooru [![Build Status](https://travis-ci.org/ayame-git/gobooru.svg?branch=master)](https://travis-ci.org/ayame-git/gobooru)
 API wrapper for boorus written in go
 
 ## Examples
